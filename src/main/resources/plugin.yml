@@ -1,0 +1,9 @@
+name: StaffWeapon
+version: '${project.version}'
+main: eu.sordiddev.staffweapon.Staffweapon
+api-version: 1.18
+authors: [ sord1d ]
+description: Staff weapon mod
+website: gihub.com/sord1d
+commands:
+  swget:
