@@ -8,6 +8,7 @@ import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 
@@ -32,7 +33,7 @@ public class ExplodeProjectile implements Listener {
                 e.getEntity().remove();
 
                //TODO DEAL DAMAGE
-                }
+
 
                 Player player = (Player) e.getEntity().getShooter();
                 player.sendMessage("Boom!");
