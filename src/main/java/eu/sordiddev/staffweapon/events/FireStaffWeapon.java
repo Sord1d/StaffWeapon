@@ -8,8 +8,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
@@ -38,7 +40,7 @@ public class FireStaffWeapon implements Listener {
                 e.setCancelled(true);
 
                 //spawn a new projectile (fireball)
-                Snowball projectile = player.getWorld().spawn(player.getLocation().add(0,2,0), Snowball.class);
+                Snowball projectile = player.getWorld().spawn(player.getLocation().add(0,1.7,0), Snowball.class);
                 projectile.isGlowing();
                 projectile.setVisualFire(true);
                 projectile.setShooter(player);
@@ -53,11 +55,36 @@ public class FireStaffWeapon implements Listener {
             }
         }
 
-
-
-
         return;
 
+
+    }
+
+    @EventHandler
+    public void ontridentklick (PlayerInteractEvent e){
+
+    Player player = e.getPlayer();
+    if (e.getAction() == Action.LEFT_CLICK_AIR){
+
+        if (Objects.requireNonNull(player.getInventory().getItemInMainHand().lore()).toString().contains("Staff Weapon")) {
+
+            //spawn a new projectile (fireball)
+            Snowball projectile = player.getWorld().spawn(player.getLocation().add(0,1.7,0), Snowball.class);
+            projectile.isGlowing();
+            projectile.setVisualFire(true);
+            projectile.setShooter(player);
+            projectile.setCustomName("StaffWeapon");
+            projectile.setCustomNameVisible(false);
+            projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(2));
+            projectile.setGravity(false);
+
+            //play the weapon sound
+            player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT,1,1);
+            player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT,1,1);
+
+        }
+
+    }
 
     }
 
