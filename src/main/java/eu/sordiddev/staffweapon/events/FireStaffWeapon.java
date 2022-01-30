@@ -38,13 +38,14 @@ public class FireStaffWeapon implements Listener {
                 e.setCancelled(true);
 
                 //spawn a new projectile (fireball)
-                Fireball projectile = player.getWorld().spawn(player.getLocation().add(0,2,0), Fireball.class);
+                Snowball projectile = player.getWorld().spawn(player.getLocation().add(0,2,0), Snowball.class);
                 projectile.isGlowing();
-                projectile.setIsIncendiary(false);
+                projectile.setVisualFire(true);
                 projectile.setShooter(player);
                 projectile.setCustomName("StaffWeapon");
                 projectile.setCustomNameVisible(false);
-                //TODO VELOCITY
+                projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(2));
+                projectile.setGravity(false);
 
                 //play the weapon sound
                 player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT,1,1);
