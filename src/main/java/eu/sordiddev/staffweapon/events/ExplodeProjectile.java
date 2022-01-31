@@ -3,6 +3,7 @@ package eu.sordiddev.staffweapon.events;
 import com.destroystokyo.paper.ParticleBuilder;
 import com.destroystokyo.paper.event.entity.ProjectileCollideEvent;
 import eu.sordiddev.staffweapon.Staffweapon;
+import jdk.tools.jlink.plugin.Plugin;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
@@ -14,10 +15,14 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
+import org.jetbrains.annotations.NotNull;
+import sun.security.provider.ConfigFile;
 
 import java.util.List;
 
 public class ExplodeProjectile implements Listener {
+
+    @NotNull Staffweapon plugin = Staffweapon.getPlugin(Staffweapon.class);
 
     //creating a new event handler to listen for our collisions
 
@@ -50,18 +55,20 @@ public class ExplodeProjectile implements Listener {
             if (e.getDamager().getName().contains("StaffWeapon")) {
 
                 //TODO DAMAGE CONFIG FILE
+                int charged = plugin.getConfig().getInt("charged");
 
                 Snowball projectile = (Snowball) e.getDamager();
                 Player player = (Player) projectile.getShooter();
-                e.setDamage(15);
+                e.setDamage(charged);
 
 
             } else if (e.getDamager().getName().contains("StaffLeft")) {
                 //TODO DAMAGE CONFIG FILE
+                int fast = plugin.getConfig().getInt("fast");
 
                 Snowball projectile = (Snowball) e.getDamager();
                 Player player = (Player) projectile.getShooter();
-                e.setDamage(5);
+                e.setDamage(fast);
 
             }
         }

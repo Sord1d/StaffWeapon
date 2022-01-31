@@ -5,8 +5,6 @@ import eu.sordiddev.staffweapon.events.ExplodeProjectile;
 import eu.sordiddev.staffweapon.events.FireStaffWeapon;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Staffweapon extends JavaPlugin {
@@ -22,7 +20,14 @@ public final class Staffweapon extends JavaPlugin {
         //registering the projectile explosion event
         getServer().getPluginManager().registerEvents( new ExplodeProjectile(),this);
 
+        //load / create the conffig
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
         //TODO Check version with github, message administrators if newer version is available
+        //TODO CONFG RELOAD
+        //TODO ADJUST CONFIG IN-GAME
+        //TODO MOBS CAN USE WEAPON
 
 
         getCommand("swget").setExecutor(new GetStaffWeapon());

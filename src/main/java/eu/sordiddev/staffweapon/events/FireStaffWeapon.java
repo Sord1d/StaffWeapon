@@ -70,9 +70,11 @@ public class FireStaffWeapon implements Listener {
                         }
                     }
                 }
-            } else  if (e.getEntity().getShooter() instanceof Monster){
+            } else  if (e.getEntity().getShooter() instanceof Monster) {
 
                 //TODO THIS IS BROKEN!
+
+                /*
 
                 ItemStack helditem = ((Monster) e.getEntity()).getActiveItem();
 
@@ -92,10 +94,16 @@ public class FireStaffWeapon implements Listener {
                         projectile.setVelocity(monster.getLocation().getDirection().normalize().multiply(2));
                         projectile.setGravity(false);
 
-                    }
-                }
-            }
 
+
+
+                    }
+
+
+                }
+
+                 */
+            }
 
 
         }

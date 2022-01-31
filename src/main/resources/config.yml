@@ -1,0 +1,14 @@
+# StaffWeapon by sord1d
+# The weapon's strength can be adjusted in-game with /sw strength
+# However, feel free to change stuff down below anyway
+
+
+# Do you want the plugin to check for updates?
+# [true / false]
+updatecheck: true
+
+# fast shot
+fast: 5
+
+# charged shot
+charged: 15
