@@ -42,7 +42,10 @@ public class ExplodeProjectile implements Listener {
 
     @EventHandler
     public void Damage(EntityDamageByEntityEvent e){
-        if (e.getEntity().getCustomName() != null) {
+
+
+
+        if (e.getDamager().getName() != null) {
 
             if (e.getDamager().getName().contains("StaffWeapon")) {
 
