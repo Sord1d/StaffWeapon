@@ -34,16 +34,17 @@ public class GetStaffWeapon implements @Nullable CommandExecutor {
                 ItemStack staffweapon = new ItemStack(Material.TRIDENT);
 
                 ItemMeta meta = staffweapon.getItemMeta();
-                meta.displayName(Component.text(ChatColor.GREEN + "Staff Weapon"));
-                meta.lore(Collections.singletonList(Component.text(ChatColor.GREEN + "Staff Weapon")));
+                meta.displayName(Component.text(ChatColor.GOLD + "Staff Weapon"));
+                meta.lore(Collections.singletonList(Component.text(ChatColor.GOLD + "Staff Weapon")));
                 staffweapon.setItemMeta(meta);
 
 
                 player.getInventory().addItem(staffweapon);
-                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.AQUA + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE + "Here's your weapon!");
+                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE + "Here's your weapon!");
 
             }else {
-                sender.sendMessage("ERROR No permissions!"); //TODO Message Design
+                sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE +"You are not permitted to do this",
+                        ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.get]");
             }
         }else{
             sender.sendMessage("ERROR This command must be executed by a player!"); //TODO Message Design

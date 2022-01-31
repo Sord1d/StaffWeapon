@@ -26,7 +26,7 @@ public class ExplodeProjectile implements Listener {
 
 
             //the projectile should be called StaffWeapon - any other collision can be ignored
-            if (e.getEntity().getCustomName().contains("StaffWeapon")){
+            if (e.getEntity().getCustomName().contains("Staff")){
 
                 //particle stuff
                 ParticleBuilder explosion = new ParticleBuilder(Particle.SMOKE_NORMAL);
