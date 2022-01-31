@@ -19,6 +19,8 @@ public final class Staffweapon extends JavaPlugin {
         //registering the projectile explosion event
         getServer().getPluginManager().registerEvents( new ExplodeProjectile(),this);
 
+        //TODO Check version with github, message administrators if newer version is available
+
 
         getCommand("swget").setExecutor(new GetStaffWeapon());
     }
