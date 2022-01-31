@@ -47,7 +47,7 @@ public class GetStaffWeapon implements @Nullable CommandExecutor {
                         ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.get]");
             }
         }else{
-            sender.sendMessage("ERROR This command must be executed by a player!"); //TODO Message Design
+            sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE +"ERROR This command must be executed by a player!"); //TODO Message Design
         }
         return false;
     }

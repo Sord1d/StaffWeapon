@@ -21,10 +21,10 @@ import java.util.Objects;
 public class FireStaffWeapon implements Listener {
 
 
+    //TODO PLAYER CHECK
+
     @EventHandler
     public void onweaponshot (ProjectileLaunchEvent e){
-
-        //TODO permission check
 
         //if it's not a trident it doesn't matter to us
         if ((e.getEntity() instanceof Trident)) {
