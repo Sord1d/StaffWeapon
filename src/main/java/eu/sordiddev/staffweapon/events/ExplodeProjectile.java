@@ -22,11 +22,11 @@ public class ExplodeProjectile implements Listener {
     //creating a new event handler to listen for our collisions
 
     @EventHandler
-    public void Explode(ProjectileHitEvent e){
+    public void Explode(ProjectileHitEvent e) {
 
-
+        if (e.getEntity().getCustomName() != null) {
             //the projectile should be called StaffWeapon - any other collision can be ignored
-            if (e.getEntity().getCustomName().contains("Staff")){
+            if (e.getEntity().getCustomName().contains("Staff")) {
 
                 //particle stuff
                 ParticleBuilder explosion = new ParticleBuilder(Particle.SMOKE_NORMAL);
@@ -37,31 +37,32 @@ public class ExplodeProjectile implements Listener {
 
             }
 
-        return;
-
+        }
     }
 
     @EventHandler
     public void Damage(EntityDamageByEntityEvent e){
-        if (e.getDamager().getName().contains("StaffWeapon"))  {
+        if (e.getEntity().getCustomName() != null) {
 
-            //TODO DAMAGE CONFIG FILE
+            if (e.getDamager().getName().contains("StaffWeapon")) {
 
-            Snowball projectile = (Snowball) e.getDamager();
-            Player player = (Player) projectile.getShooter();
-            e.setDamage(15);
+                //TODO DAMAGE CONFIG FILE
+
+                Snowball projectile = (Snowball) e.getDamager();
+                Player player = (Player) projectile.getShooter();
+                e.setDamage(15);
 
 
-        }else if (e.getDamager().getName().contains("StaffLeft")) {
-            //TODO DAMAGE CONFIG FILE
+            } else if (e.getDamager().getName().contains("StaffLeft")) {
+                //TODO DAMAGE CONFIG FILE
 
-            Snowball projectile = (Snowball) e.getDamager();
-            Player player = (Player) projectile.getShooter();
-            e.setDamage(5);
+                Snowball projectile = (Snowball) e.getDamager();
+                Player player = (Player) projectile.getShooter();
+                e.setDamage(5);
 
+            }
         }
     }
-
 
 }
 
