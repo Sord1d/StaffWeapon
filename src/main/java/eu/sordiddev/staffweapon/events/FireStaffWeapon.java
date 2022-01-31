@@ -32,38 +32,45 @@ public class FireStaffWeapon implements Listener {
         if ((e.getEntity() instanceof Trident)) {
 
             //get shooter's name
-            Player player = (Player) e.getEntity().getShooter();
-            assert player != null;
+
 
             //get the held item and check for out staff weapon lore
             //if present we will cancel the throwing event to create our own
-            ItemStack helditem = player.getInventory().getItemInMainHand();
-            if (helditem.lore() != null) {
-                if (helditem.lore().toString().contains("Staff Weapon")) {
-                    e.setCancelled(true);
 
-                    Boolean permission = player.hasPermission("staffweapon.admin") | player.hasPermission("staffweapon.shoot.charge");
 
-                    if (permission) {
+            if (e.getEntity() instanceof Player) {
+                Player player = (Player) e.getEntity().getShooter();
+                assert player != null;
+                ItemStack helditem = player.getInventory().getItemInMainHand();
+                if (helditem.lore() != null) {
+                    if (helditem.lore().toString().contains("Staff Weapon")) {
+                        e.setCancelled(true);
 
-                        //spawn a new projectile (fireball)
-                        Snowball projectile = player.getWorld().spawn(player.getLocation().add(0, 1.7, 0), Snowball.class);
-                        projectile.isGlowing();
-                        projectile.setVisualFire(true);
-                        projectile.setShooter(player);
-                        projectile.setCustomName("StaffWeapon");
-                        projectile.setCustomNameVisible(false);
-                        projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(2));
-                        projectile.setGravity(false);
+                        Boolean permission = player.hasPermission("staffweapon.admin") | player.hasPermission("staffweapon.shoot.charge");
 
-                        //play the weapon sound
-                        player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 1, 1);
-                        player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1, 1);
+                        if (permission) {
 
-                    } else {
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE + "You are not permitted to do this",
-                                ChatColor.DARK_GRAY + "[Lacking the permission node staffweapon.shoot.charge]");
+                            //spawn a new projectile (fireball)
+                            Snowball projectile = player.getWorld().spawn(player.getLocation().add(0, 1.7, 0), Snowball.class);
+                            projectile.isGlowing();
+                            projectile.setVisualFire(true);
+                            projectile.setShooter(player);
+                            projectile.setCustomName("StaffWeapon");
+                            projectile.setCustomNameVisible(false);
+                            projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(2));
+                            projectile.setGravity(false);
+
+                            //play the weapon sound
+                            player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 1, 1);
+                            player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1, 1);
+
+                        } else {
+                            player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE + "You are not permitted to do this",
+                                    ChatColor.DARK_GRAY + "[Lacking the permission node staffweapon.shoot.charge]");
+                        }
                     }
+                }else  if (e.getEntity() instanceof Monster){
+                    //todo let the mob use the weapon
                 }
             }
 
