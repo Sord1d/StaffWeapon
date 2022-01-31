@@ -7,3 +7,13 @@ description: Staff weapon mod
 website: gihub.com/sord1d
 commands:
   swget:
+    description: gives a staff weapon to the player
+permissions:
+  staffweapon.get:
+    description: permission to use /swget
+  staffweapon.shoot.fast:
+    description: permission to shoot the weapon (left klick)
+  staffweapon.shoot.charge:
+    description: permission to shoot the weapon (right click)
+  staffweapon.admin:
+    description: full permissions + show update info

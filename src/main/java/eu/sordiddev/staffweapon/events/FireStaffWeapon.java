@@ -39,19 +39,27 @@ public class FireStaffWeapon implements Listener {
             if(Objects.requireNonNull(helditem.lore()).toString().contains("Staff Weapon")) {
                 e.setCancelled(true);
 
-                //spawn a new projectile (fireball)
-                Snowball projectile = player.getWorld().spawn(player.getLocation().add(0,1.7,0), Snowball.class);
-                projectile.isGlowing();
-                projectile.setVisualFire(true);
-                projectile.setShooter(player);
-                projectile.setCustomName("StaffWeapon");
-                projectile.setCustomNameVisible(false);
-                projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(2));
-                projectile.setGravity(false);
+                Boolean permission = player.hasPermission("staffweapon.admin") | player.hasPermission("staffweapon.shoot.charge");
 
-                //play the weapon sound
-                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT,1,1);
-                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT,1,1);
+                if (permission) {
+
+                    //spawn a new projectile (fireball)
+                    Snowball projectile = player.getWorld().spawn(player.getLocation().add(0, 1.7, 0), Snowball.class);
+                    projectile.isGlowing();
+                    projectile.setVisualFire(true);
+                    projectile.setShooter(player);
+                    projectile.setCustomName("StaffWeapon");
+                    projectile.setCustomNameVisible(false);
+                    projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(2));
+                    projectile.setGravity(false);
+
+                    //play the weapon sound
+                    player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 1, 1);
+                    player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1, 1);
+
+                }else{
+                    player.sendMessage("ERROR No permissions!"); //TODO Message Design
+                }
             }
         }
 
@@ -68,19 +76,26 @@ public class FireStaffWeapon implements Listener {
 
         if (Objects.requireNonNull(player.getInventory().getItemInMainHand().lore()).toString().contains("Staff Weapon")) {
 
-            //spawn a new projectile (fireball)
-            Snowball projectile = player.getWorld().spawn(player.getLocation().add(0,1.7,0), Snowball.class);
-            projectile.isGlowing();
-            projectile.setVisualFire(true);
-            projectile.setShooter(player);
-            projectile.setCustomName("StaffWeapon");
-            projectile.setCustomNameVisible(false);
-            projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(2));
-            projectile.setGravity(false);
+            Boolean permission = player.hasPermission("staffweapon.admin") | player.hasPermission("staffweapon.shoot.fast");
 
-            //play the weapon sound
-            player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT,1,1);
-            player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT,1,1);
+            if (permission) {
+
+                //spawn a new projectile (fireball)
+                Snowball projectile = player.getWorld().spawn(player.getLocation().add(0, 1.7, 0), Snowball.class);
+                projectile.isGlowing();
+                projectile.setVisualFire(true);
+                projectile.setShooter(player);
+                projectile.setCustomName("StaffLeft");
+                projectile.setCustomNameVisible(false);
+                projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(2));
+                projectile.setGravity(false);
+
+                //play the weapon sound
+                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 1, 1);
+                player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1, 1);
+            }else{
+                player.sendMessage("ERROR No permissions!"); //TODO Message Design
+            }
 
         }
 

@@ -53,8 +53,15 @@ public class ExplodeProjectile implements Listener {
 
             player.sendMessage("Boom!"); //Todo remove
 
+        }else if (e.getDamager().getName().contains("StaffLeft")) {
+            //TODO DAMAGE CONFIG FILE
+
+            Snowball projectile = (Snowball) e.getDamager();
+            Player player = (Player) projectile.getShooter();
+            e.setDamage(5);
+
+            player.sendMessage("Boom left click!"); //Todo remove
         }
-        return;
     }
 
 

@@ -22,21 +22,29 @@ public class GetStaffWeapon implements @Nullable CommandExecutor {
 
         if (sender instanceof Player) {
 
-            //TODO PERMISSION CHECK
 
             Player player = (Player) sender;
 
-            //Defining the weapon object
-            ItemStack staffweapon = new ItemStack(Material.TRIDENT);
+            boolean permission = player.hasPermission("staffweapon.get") | player.hasPermission("staffweapon.admin");
 
-            ItemMeta meta = staffweapon.getItemMeta();
-            meta.displayName(Component.text(ChatColor.GREEN + "Staff Weapon"));
-            meta.lore(Collections.singletonList(Component.text(ChatColor.GREEN  + "Staff Weapon")));
-            staffweapon.setItemMeta(meta);
+            if (permission) {
 
 
-            player.getInventory().addItem(staffweapon);
-            player.sendMessage(ChatColor.GRAY+"["+ChatColor.AQUA+"StaffWeapon"+ChatColor.GRAY+"] " +ChatColor.WHITE +"Here's your weapon!");
+                //Defining the weapon object
+                ItemStack staffweapon = new ItemStack(Material.TRIDENT);
+
+                ItemMeta meta = staffweapon.getItemMeta();
+                meta.displayName(Component.text(ChatColor.GREEN + "Staff Weapon"));
+                meta.lore(Collections.singletonList(Component.text(ChatColor.GREEN + "Staff Weapon")));
+                staffweapon.setItemMeta(meta);
+
+
+                player.getInventory().addItem(staffweapon);
+                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.AQUA + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE + "Here's your weapon!");
+
+            }else {
+                sender.sendMessage("ERROR No permissions!"); //TODO Message Design
+            }
         }else{
             sender.sendMessage("ERROR This command must be executed by a player!"); //TODO Message Design
         }
