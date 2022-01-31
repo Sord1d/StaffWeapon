@@ -38,7 +38,7 @@ public class FireStaffWeapon implements Listener {
             //if present we will cancel the throwing event to create our own
 
 
-            if (e.getEntity() instanceof Player) {
+            if (e.getEntity().getShooter() instanceof Player) {
                 Player player = (Player) e.getEntity().getShooter();
                 assert player != null;
                 ItemStack helditem = player.getInventory().getItemInMainHand();
@@ -69,10 +69,34 @@ public class FireStaffWeapon implements Listener {
                                     ChatColor.DARK_GRAY + "[Lacking the permission node staffweapon.shoot.charge]");
                         }
                     }
-                }else  if (e.getEntity() instanceof Monster){
-                    //todo let the mob use the weapon
+                }
+            } else  if (e.getEntity().getShooter() instanceof Monster){
+
+                //TODO THIS IS BROKEN!
+
+                ItemStack helditem = ((Monster) e.getEntity()).getActiveItem();
+
+                if (helditem.lore() != null) {
+
+                    if (helditem.lore().toString().contains("Staff Weapon")) {
+                        e.setCancelled(true);
+
+                        Monster monster = (Monster) e.getEntity().getShooter();
+
+                        Snowball projectile = monster.getWorld().spawn(monster.getLocation().add(0, 1.7, 0), Snowball.class);
+                        projectile.isGlowing();
+                        projectile.setVisualFire(true);
+                        projectile.setShooter(monster);
+                        projectile.setCustomName("StaffWeapon");
+                        projectile.setCustomNameVisible(false);
+                        projectile.setVelocity(monster.getLocation().getDirection().normalize().multiply(2));
+                        projectile.setGravity(false);
+
+                    }
                 }
             }
+
+
 
         }
     }
