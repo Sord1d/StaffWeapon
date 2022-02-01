@@ -14,16 +14,29 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
 
-public class GetStaffWeapon implements @Nullable CommandExecutor {
+public class GetStaffWeapon extends SubCommand {
 
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public String getName() {
+        return "get";
+    }
 
-        if (sender instanceof Player) {
+    @Override
+    public String getDescription() {
+        return "Get a StaffWeapon";
+    }
 
+    @Override
+    public String getSyntax() {
+        return "/sw get";
+    }
 
-            Player player = (Player) sender;
+    @Override
+    public void perform(Player player, String[] args) {
+
+        if (player instanceof Player) {
+
 
             boolean permission = player.hasPermission("staffweapon.get") | player.hasPermission("staffweapon.admin");
 
@@ -43,12 +56,13 @@ public class GetStaffWeapon implements @Nullable CommandExecutor {
                 player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE + "Here's your weapon!");
 
             }else {
-                sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE +"You are not permitted to do this",
+                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE +"You are not permitted to do this",
                         ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.get]");
             }
         }else{
-            sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE +"ERROR This command must be executed by a player!"); //TODO Message Design
+            player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE +"ERROR This command must be executed by a player!"); //TODO Message Design
         }
-        return false;
+
+
     }
 }

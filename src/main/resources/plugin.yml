@@ -6,8 +6,8 @@ authors: [ sord1d ]
 description: Staff weapon mod
 website: gihub.com/sord1d
 commands:
-  swget:
-    description: gives a staff weapon to the player
+  sw:
+    description: display info and help
 permissions:
   staffweapon.get:
     description: permission to use /swget

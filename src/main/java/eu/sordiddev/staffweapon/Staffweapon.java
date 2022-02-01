@@ -1,5 +1,6 @@
 package eu.sordiddev.staffweapon;
 
+import eu.sordiddev.staffweapon.commands.CommandManager;
 import eu.sordiddev.staffweapon.commands.GetStaffWeapon;
 import eu.sordiddev.staffweapon.events.ExplodeProjectile;
 import eu.sordiddev.staffweapon.events.FireStaffWeapon;
@@ -20,17 +21,17 @@ public final class Staffweapon extends JavaPlugin {
         //registering the projectile explosion event
         getServer().getPluginManager().registerEvents( new ExplodeProjectile(),this);
 
-        //load / create the conffig
+        //load / create the config
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
         //TODO Check version with github, message administrators if newer version is available
-        //TODO CONFG RELOAD
+        //TODO CONFIG RELOAD
         //TODO ADJUST CONFIG IN-GAME
         //TODO MOBS CAN USE WEAPON
 
 
-        getCommand("swget").setExecutor(new GetStaffWeapon());
+       getCommand("sw").setExecutor(new CommandManager());
     }
 
     @Override
