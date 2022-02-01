@@ -23,7 +23,6 @@ public class CommandManager implements CommandExecutor {
         subcommands.add(new GetValues());
         subcommands.add(new SetFast());
         subcommands.add(new SetCharge());
-        subcommands.add(new Reload());
 
     }
 

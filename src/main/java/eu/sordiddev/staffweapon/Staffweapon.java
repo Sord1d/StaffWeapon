@@ -26,7 +26,6 @@ public final class Staffweapon extends JavaPlugin {
 
         //TODO Check version with github, message administrators if newer version is available
         //TODO CONFIG RELOAD
-        //TODO ADJUST CONFIG IN-GAME
         //TODO MOBS CAN USE WEAPON
 
 
