@@ -65,7 +65,7 @@ public class FireStaffWeapon implements Listener {
                             player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1, 1);
 
                         } else {
-                            player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE + "You are not permitted to do this",
+                            player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
                                     ChatColor.DARK_GRAY + "[Lacking the permission node staffweapon.shoot.charge]");
                         }
                     }
@@ -135,7 +135,7 @@ public class FireStaffWeapon implements Listener {
                         player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 1, 1);
                         player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1, 1);
                     } else {
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.WHITE + "You are not permitted to do this",
+                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
                                 ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.shoot.fast]");
                     }
 

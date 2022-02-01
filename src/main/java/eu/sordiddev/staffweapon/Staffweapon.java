@@ -1,7 +1,6 @@
 package eu.sordiddev.staffweapon;
 
-import eu.sordiddev.staffweapon.commands.CommandManager;
-import eu.sordiddev.staffweapon.commands.GetStaffWeapon;
+import eu.sordiddev.staffweapon.services.CommandManager;
 import eu.sordiddev.staffweapon.events.ExplodeProjectile;
 import eu.sordiddev.staffweapon.events.FireStaffWeapon;
 import org.bukkit.Bukkit;
@@ -32,6 +31,7 @@ public final class Staffweapon extends JavaPlugin {
 
 
        getCommand("sw").setExecutor(new CommandManager());
+
     }
 
     @Override

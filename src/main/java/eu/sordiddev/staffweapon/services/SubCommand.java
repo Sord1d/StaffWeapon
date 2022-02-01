@@ -1,4 +1,4 @@
-package eu.sordiddev.staffweapon.commands;
+package eu.sordiddev.staffweapon.services;
 
 import org.bukkit.entity.Player;
 
