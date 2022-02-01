@@ -49,14 +49,15 @@ public class SetCharge extends SubCommand {
             }
         } else {
 
-        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
-                ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.admin]");
+            player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
+                    ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.admin]");
+        }
     }
 
 
 
 
-    }
+
 
 
 }

@@ -1,8 +1,6 @@
 package eu.sordiddev.staffweapon.services;
 
-import eu.sordiddev.staffweapon.commands.GetStaffWeapon;
-import eu.sordiddev.staffweapon.commands.SetCharge;
-import eu.sordiddev.staffweapon.commands.SetFast;
+import eu.sordiddev.staffweapon.commands.*;
 import eu.sordiddev.staffweapon.services.SubCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -22,8 +20,10 @@ public class CommandManager implements CommandExecutor {
     public CommandManager(){
 
         subcommands.add(new GetStaffWeapon());
+        subcommands.add(new GetValues());
         subcommands.add(new SetFast());
         subcommands.add(new SetCharge());
+        subcommands.add(new Reload());
 
     }
 

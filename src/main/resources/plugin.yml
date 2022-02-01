@@ -17,3 +17,5 @@ permissions:
     description: permission to shoot the weapon (right click)
   staffweapon.admin:
     description: full permissions + show update info
+  staffweapon.lookup:
+    description: player can lookup damage dealt by weapon
