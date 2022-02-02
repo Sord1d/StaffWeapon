@@ -20,7 +20,7 @@ public class GetStaffWeapon extends SubCommand {
 
     @Override
     public String getDescription() {
-        return "Get a StaffWeapon";
+        return "get a staffweapon";
     }
 
     @Override

@@ -18,6 +18,7 @@ public class CommandManager implements CommandExecutor {
 
     public CommandManager(){
 
+        subcommands.add(new Help()); //this one is hidden
         subcommands.add(new GetStaffWeapon());
         subcommands.add(new GetValues());
         subcommands.add(new SetFast());
@@ -51,7 +52,10 @@ public class CommandManager implements CommandExecutor {
                         ChatColor.RED +  "          sord1d/" + ChatColor.GOLD + ChatColor.BOLD + "StaffWeapon",
                         ChatColor.GOLD + "--------------------------------");
                 for (int i = 0; i < getSubcommands().size(); i++){
-                    player.sendMessage(ChatColor.RED + getSubcommands().get(i).getSyntax() + "  " + ChatColor.GOLD + getSubcommands().get(i).getDescription());
+                    String name = getSubcommands().get(i).getSyntax();
+                    if (!(name == null)) {
+                        player.sendMessage(ChatColor.RED + getSubcommands().get(i).getSyntax() + "  " + ChatColor.GOLD + getSubcommands().get(i).getDescription());
+                    }
                 }
                 player.sendMessage(ChatColor.GOLD + "--------------------------------");
             }
