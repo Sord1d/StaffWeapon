@@ -85,7 +85,7 @@ public class FireStaffWeapon implements Listener {
                         projectile.setShooter(monster);
                         projectile.setCustomName("StaffWeapon");
                         projectile.setCustomNameVisible(false);
-                        projectile.setVelocity(monster.getLocation().getDirection().normalize().multiply(5));
+                        projectile.setVelocity(monster.getLocation().getDirection().normalize().multiply(3));
 
                     }
                 }
