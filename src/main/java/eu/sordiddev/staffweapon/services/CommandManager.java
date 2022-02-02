@@ -1,7 +1,6 @@
 package eu.sordiddev.staffweapon.services;
 
 import eu.sordiddev.staffweapon.commands.*;
-import eu.sordiddev.staffweapon.services.SubCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,6 +22,7 @@ public class CommandManager implements CommandExecutor {
         subcommands.add(new GetValues());
         subcommands.add(new SetFast());
         subcommands.add(new SetCharge());
+        subcommands.add(new SetMobCharge());
 
     }
 
@@ -33,11 +33,19 @@ public class CommandManager implements CommandExecutor {
             Player player = (Player) sender;
 
             if (args.length > 0){
+
+                boolean commandfound = true;
+
                 for (int i = 0; i < getSubcommands().size(); i++){
                     if (args[0].equalsIgnoreCase(getSubcommands().get(i).getName())){
+
                         getSubcommands().get(i).perform(player, args);
+
+
                     }
                 }
+
+
             }else if(args.length == 0){
                 player.sendMessage("",
                         ChatColor.RED +  "          sord1d/" + ChatColor.GOLD + ChatColor.BOLD + "StaffWeapon",
@@ -47,6 +55,7 @@ public class CommandManager implements CommandExecutor {
                 }
                 player.sendMessage(ChatColor.GOLD + "--------------------------------");
             }
+
 
         }
 

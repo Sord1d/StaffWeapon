@@ -25,7 +25,7 @@ public class SetFast extends SubCommand {
     }
 
     @Override
-    public void perform(Player player, String[] args) {
+    public boolean perform(Player player, String[] args) {
 
         @NotNull Staffweapon plugin = Staffweapon.getPlugin(Staffweapon.class);
 
@@ -51,6 +51,7 @@ public class SetFast extends SubCommand {
             player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
                     ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.admin]");
         }
+        return false;
     }
 
 

@@ -12,3 +12,6 @@ fast: 5
 
 # charged shot
 charged: 15
+
+#Mob charged shot
+mob: 5

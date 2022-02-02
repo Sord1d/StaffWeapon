@@ -6,22 +6,22 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class SetCharge extends SubCommand {
+public class SetMobCharge extends SubCommand {
 
 
     @Override
     public String getName() {
-        return "setcharged";
+        return "setmob";
     }
 
     @Override
     public String getDescription() {
-        return "set the damage amount of the charged shot";
+        return "set the damage amount when the weapon shot by mobs";
     }
 
     @Override
     public String getSyntax() {
-        return "/sw setcharged <number>";
+        return "/sw setmob <number>";
     }
 
     @Override
@@ -36,13 +36,13 @@ public class SetCharge extends SubCommand {
             if (args.length > 1) {
                 try {
                     int charged = Integer.parseInt(args[1]);
-                    int chargedold = plugin.getConfig().getInt("charged");
+                    int chargedold = plugin.getConfig().getInt("mob");
 
-                    plugin.getConfig().set("charged", charged);
+                    plugin.getConfig().set("mob", charged);
                     plugin.saveConfig();
                     player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You've changed the shot damage from " + chargedold + " to " + charged);
                 } catch (Exception e) {
-                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "Usage: /sw setcharged <number>");
+                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "Usage: /sw setmob <number>");
 
                 }
 

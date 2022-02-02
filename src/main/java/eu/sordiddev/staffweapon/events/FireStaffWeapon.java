@@ -1,23 +1,14 @@
 package eu.sordiddev.staffweapon.events;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Server;
-import org.bukkit.Sound;
-import org.bukkit.block.data.type.Fire;
-import org.bukkit.command.CommandSender;
+import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.util.Vector;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
+import org.bukkit.plugin.Plugin;
 
 public class FireStaffWeapon implements Listener {
 
@@ -50,9 +41,11 @@ public class FireStaffWeapon implements Listener {
 
                         if (permission) {
 
+                            World world = player.getWorld();
+
                             //spawn a new projectile (fireball)
                             Snowball projectile = player.getWorld().spawn(player.getLocation().add(0, 1.7, 0), Snowball.class);
-                            projectile.isGlowing();
+                            projectile.setGlowing(true);
                             projectile.setVisualFire(true);
                             projectile.setShooter(player);
                             projectile.setCustomName("StaffWeapon");
@@ -61,8 +54,8 @@ public class FireStaffWeapon implements Listener {
                             projectile.setGravity(false);
 
                             //play the weapon sound
-                            player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 1, 1);
-                            player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1, 1);
+                            world.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 1, 1);
+                            world.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1, 1);
 
                         } else {
                             player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
@@ -74,6 +67,32 @@ public class FireStaffWeapon implements Listener {
 
                 //TODO THIS IS BROKEN!
 
+                Monster monster = (Monster) e.getEntity().getShooter();
+                ItemStack helditem = monster.getActiveItem();
+
+                if (helditem.lore() != null){
+
+                    e.setCancelled(true);
+
+                    if (String.valueOf(helditem.lore()).contains("Staff Weapon")){
+
+                        Location location = monster.getLocation().add(0,1.7,0);
+                        World world = monster.getWorld();
+
+                        world.playSound(location, Sound.ENTITY_WITHER_HURT, 1, 1);
+                        world.playSound(location, Sound.ENTITY_WITHER_HURT, 1, 1);
+
+                        Snowball projectile = world.spawn(location, Snowball.class);
+                        projectile.setGlowing(true);
+                        projectile.setVisualFire(true);
+                        projectile.setShooter(monster);
+                        projectile.setCustomName("StaffWeapon");
+                        projectile.setCustomNameVisible(false);
+                        projectile.setVelocity(monster.getLocation().getDirection().normalize().multiply(2));
+                        projectile.setGravity(false);
+
+                    }
+                }
                 /*
 
                 ItemStack helditem = ((Monster) e.getEntity()).getActiveItem();
@@ -111,7 +130,7 @@ public class FireStaffWeapon implements Listener {
 
 
     @EventHandler
-    public void ontridentklick(PlayerInteractEvent e) {
+    public void ontridentklick(PlayerInteractEvent e) throws InterruptedException {
 
         Player player = e.getPlayer();
         if (e.getAction() == Action.LEFT_CLICK_AIR && player.getInventory().getItemInMainHand().lore() != null) {
@@ -119,11 +138,12 @@ public class FireStaffWeapon implements Listener {
                 if (player.getInventory().getItemInMainHand().lore().toString().contains("Staff Weapon")) {
                     Boolean permission = player.hasPermission("staffweapon.admin") | player.hasPermission("staffweapon.shoot.fast");
 
+                    Snowball projectile = null;
                     if (permission) {
 
                         //spawn a new projectile (fireball)
-                        Snowball projectile = player.getWorld().spawn(player.getLocation().add(0, 1.7, 0), Snowball.class);
-                        projectile.isGlowing();
+                        projectile = player.getWorld().spawn(player.getLocation().add(0, 1.7, 0), Snowball.class);
+                        projectile.setGlowing(true);
                         projectile.setVisualFire(true);
                         projectile.setShooter(player);
                         projectile.setCustomName("StaffLeft");
@@ -131,16 +151,21 @@ public class FireStaffWeapon implements Listener {
                         projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(2));
                         projectile.setGravity(false);
 
+                        //TODO remove projectile somehow
+
+
                         //play the weapon sound
                         player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 1, 1);
                         player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1, 1);
+
+
                     } else {
                         player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
                                 ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.shoot.fast]");
                     }
 
-                }
 
+                }
         }
     }
 }

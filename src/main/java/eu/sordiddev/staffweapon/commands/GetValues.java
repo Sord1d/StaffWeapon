@@ -26,9 +26,10 @@ public class GetValues extends SubCommand {
     }
 
     @Override
-    public void perform(Player player, String[] args) {
+    public boolean perform(Player player, String[] args) {
     int fast = plugin.getConfig().getInt("fast");
     int charged = plugin.getConfig().getInt("charged");
+    int mob = plugin.getConfig().getInt("mob");
 
         boolean permission = player.hasPermission("staffweapon.lookup") | player.hasPermission("staffweapon.admin");
 
@@ -38,7 +39,8 @@ public class GetValues extends SubCommand {
                     ChatColor.RED + "Staff" + ChatColor.GOLD + "Weapon",
                     ChatColor.GOLD + "--------------",
                     ChatColor.RED + "Fast shot: " + ChatColor.GOLD + fast + " damage",
-                    ChatColor.RED + "Charged shot: " + ChatColor.GOLD + charged + " damage");
+                    ChatColor.RED + "Charged shot: " + ChatColor.GOLD + charged + " damage",
+                    ChatColor.RED + "Mob shot: " + ChatColor.GOLD + mob + " damage");
         } else {
 
             player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
@@ -46,5 +48,6 @@ public class GetValues extends SubCommand {
         }
 
 
+        return permission;
     }
 }
