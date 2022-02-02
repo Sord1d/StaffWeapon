@@ -8,7 +8,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
+
 
 public class FireStaffWeapon implements Listener {
 
@@ -93,35 +93,7 @@ public class FireStaffWeapon implements Listener {
 
                     }
                 }
-                /*
 
-                ItemStack helditem = ((Monster) e.getEntity()).getActiveItem();
-
-                if (helditem.lore() != null) {
-
-                    if (helditem.lore().toString().contains("Staff Weapon")) {
-                        e.setCancelled(true);
-
-                        Monster monster = (Monster) e.getEntity().getShooter();
-
-                        Snowball projectile = monster.getWorld().spawn(monster.getLocation().add(0, 1.7, 0), Snowball.class);
-                        projectile.isGlowing();
-                        projectile.setVisualFire(true);
-                        projectile.setShooter(monster);
-                        projectile.setCustomName("StaffWeapon");
-                        projectile.setCustomNameVisible(false);
-                        projectile.setVelocity(monster.getLocation().getDirection().normalize().multiply(2));
-                        projectile.setGravity(false);
-
-
-
-
-                    }
-
-
-                }
-
-                 */
             }
 
 
