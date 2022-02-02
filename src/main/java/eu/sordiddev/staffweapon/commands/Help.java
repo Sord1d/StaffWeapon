@@ -24,7 +24,7 @@ public class Help extends SubCommand {
     @Override
     public boolean perform(Player player, String[] args) {
 
-        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "For a full list of command use /sw ");
+        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "For a full list of commands use /sw ");
 
         return false;
     }
