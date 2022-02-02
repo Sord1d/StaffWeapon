@@ -1,33 +1,20 @@
 package eu.sordiddev.staffweapon.commands;
 
 import eu.sordiddev.staffweapon.Staffweapon;
-import eu.sordiddev.staffweapon.services.SubCommand;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class SetCharge extends SubCommand {
+public class SetCharge {
 
 
-    @Override
-    public String getName() {
-        return "setcharged";
-    }
-
-    @Override
-    public String getDescription() {
-        return "set the damage amount of the charged shot";
-    }
-
-    @Override
-    public String getSyntax() {
-        return "/sw setcharged <number>";
-    }
-
-    @Override
-    public boolean perform(Player player, String[] args) {
+    public SetCharge(CommandSender sender, Command command, String label, String[] args) {
+        super();
 
         @NotNull Staffweapon plugin = Staffweapon.getPlugin(Staffweapon.class);
+        Player player = (Player) sender;
 
         Boolean permission = player.hasPermission("staffweapon.admin");
 
@@ -52,8 +39,9 @@ public class SetCharge extends SubCommand {
             player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
                     ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.admin]");
         }
-        return false;
+
     }
+
 
 
 

@@ -5,70 +5,55 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 
 
 public class CommandManager implements CommandExecutor {
 
 
-    private static ArrayList<SubCommand> subcommands = new ArrayList<>();
-
-    public CommandManager(){
-
-        subcommands.add(new Help()); //this one is hidden
-        subcommands.add(new GetStaffWeapon());
-        subcommands.add(new GetValues());
-        subcommands.add(new SetFast());
-        subcommands.add(new SetCharge());
-        subcommands.add(new SetMobCharge());
-
-    }
-
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
-        if (sender instanceof Player){
-            Player player = (Player) sender;
 
-            if (args.length > 0){
+        try {
 
-                boolean commandfound = true;
-
-                for (int i = 0; i < getSubcommands().size(); i++){
-                    if (args[0].equalsIgnoreCase(getSubcommands().get(i).getName())){
-
-                        getSubcommands().get(i).perform(player, args);
-
-
-                    }
-                }
-
-
-            }else if(args.length == 0){
-                player.sendMessage("",
-                        ChatColor.RED +  "          sord1d/" + ChatColor.GOLD + ChatColor.BOLD + "StaffWeapon",
+            if (args[0].contains("get")) {
+                new GetStaffWeapon(sender, command, label, args);
+            } else if (args[0].contains("damage")) {
+                new GetValues(sender, command, label, args);
+            } else if (args[0].contains("setfast")) {
+                new SetFast(sender, command, label, args);
+            } else if (args[0].contains("setcharged")) {
+                new SetCharge(sender, command, label, args);
+            } else if (args[0].contains("setmob")) {
+                new SetMobCharge(sender, command, label, args);
+            } else {
+                sender.sendMessage(
+                        ChatColor.RED + "          sord1d/" + ChatColor.GOLD + ChatColor.BOLD + "StaffWeapon",
+                        ChatColor.GOLD + "--------------------------------",
+                        ChatColor.RED + "/sw get  " + ChatColor.GOLD + "get a staff weapon",
+                        ChatColor.RED + "/sw damage  " + ChatColor.GOLD + "lookup damage done by the staff weapon",
+                        ChatColor.RED + "/sw setfast  " + ChatColor.GOLD + "set damage amount of the fast shot",
+                        ChatColor.RED + "/sw setcharged  " + ChatColor.GOLD + "set damage amount of the charged shot",
+                        ChatColor.RED + "/sw setmob  " + ChatColor.GOLD + "set damage amount if a mob uses the staff weapon",
                         ChatColor.GOLD + "--------------------------------");
-                for (int i = 0; i < getSubcommands().size(); i++){
-                    String name = getSubcommands().get(i).getSyntax();
-                    if (!(name == null)) {
-                        player.sendMessage(ChatColor.RED + getSubcommands().get(i).getSyntax() + "  " + ChatColor.GOLD + getSubcommands().get(i).getDescription());
-                    }
-                }
-                player.sendMessage(ChatColor.GOLD + "--------------------------------");
             }
 
+        }catch (Exception e){
 
+            sender.sendMessage(
+                    ChatColor.RED + "          sord1d/" + ChatColor.GOLD + ChatColor.BOLD + "StaffWeapon",
+                    ChatColor.GOLD + "--------------------------------",
+                    ChatColor.RED + "/sw get  " + ChatColor.GOLD + "get a staff weapon",
+                    ChatColor.RED + "/sw damage  " + ChatColor.GOLD + "lookup damage done by the staff weapon",
+                    ChatColor.RED + "/sw setfast  " + ChatColor.GOLD + "set damage amount of the fast shot",
+                    ChatColor.RED + "/sw setcharged  " + ChatColor.GOLD + "set damage amount of the charged shot",
+                    ChatColor.RED + "/sw setmob  " + ChatColor.GOLD + "set damage amount if a mob uses the staff weapon",
+                    ChatColor.GOLD + "--------------------------------");
         }
 
 
-        return true;
+        return false;
     }
-
-    public ArrayList<SubCommand> getSubcommands(){
-        return subcommands;
-    }
-
 }

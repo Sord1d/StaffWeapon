@@ -1,31 +1,20 @@
 package eu.sordiddev.staffweapon.commands;
 
 import eu.sordiddev.staffweapon.Staffweapon;
-import eu.sordiddev.staffweapon.services.SubCommand;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class SetFast extends SubCommand {
+public class SetFast {
 
 
-    @Override
-    public String getName() {
-        return "setfast";
-    }
+    public SetFast(CommandSender sender, Command command, String label, String[] args) {
+        super();
 
-    @Override
-    public String getDescription() {
-        return "set the damage amount of the fast shot";
-    }
 
-    @Override
-    public String getSyntax() {
-        return "/sw setfast <number>";
-    }
-
-    @Override
-    public boolean perform(Player player, String[] args) {
+        Player player = (Player) sender;
 
         @NotNull Staffweapon plugin = Staffweapon.getPlugin(Staffweapon.class);
 
@@ -51,7 +40,6 @@ public class SetFast extends SubCommand {
             player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
                     ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.admin]");
         }
-        return false;
     }
 
 

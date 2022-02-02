@@ -1,35 +1,24 @@
 package eu.sordiddev.staffweapon.commands;
 
 import eu.sordiddev.staffweapon.Staffweapon;
-import eu.sordiddev.staffweapon.services.SubCommand;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class GetValues extends SubCommand {
+public class GetValues {
 
     @NotNull Staffweapon plugin = Staffweapon.getPlugin(Staffweapon.class);
 
-    @Override
-    public String getName() {
-        return "damage";
-    }
+    public GetValues(CommandSender sender, Command command, String label, String[] args) {
+        super();
 
-    @Override
-    public String getDescription() {
-        return "shows the damage dealt by the weapon";
-    }
+        Player player = (Player) sender;
 
-    @Override
-    public String getSyntax() {
-        return "/sw damage";
-    }
-
-    @Override
-    public boolean perform(Player player, String[] args) {
-    int fast = plugin.getConfig().getInt("fast");
-    int charged = plugin.getConfig().getInt("charged");
-    int mob = plugin.getConfig().getInt("mob");
+        int fast = plugin.getConfig().getInt("fast");
+        int charged = plugin.getConfig().getInt("charged");
+        int mob = plugin.getConfig().getInt("mob");
 
         boolean permission = player.hasPermission("staffweapon.lookup") | player.hasPermission("staffweapon.admin");
 
@@ -46,8 +35,5 @@ public class GetValues extends SubCommand {
             player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
                     ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.lookup]");
         }
-
-
-        return permission;
     }
 }

@@ -50,8 +50,7 @@ public class FireStaffWeapon implements Listener {
                             projectile.setShooter(player);
                             projectile.setCustomName("StaffWeapon");
                             projectile.setCustomNameVisible(false);
-                            projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(2));
-                            projectile.setGravity(false);
+                            projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(5));
 
                             //play the weapon sound
                             world.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 1, 1);
@@ -64,8 +63,6 @@ public class FireStaffWeapon implements Listener {
                     }
                 }
             } else  if (e.getEntity().getShooter() instanceof Monster) {
-
-                //TODO THIS IS BROKEN!
 
                 Monster monster = (Monster) e.getEntity().getShooter();
                 ItemStack helditem = monster.getActiveItem();
@@ -88,8 +85,7 @@ public class FireStaffWeapon implements Listener {
                         projectile.setShooter(monster);
                         projectile.setCustomName("StaffWeapon");
                         projectile.setCustomNameVisible(false);
-                        projectile.setVelocity(monster.getLocation().getDirection().normalize().multiply(2));
-                        projectile.setGravity(false);
+                        projectile.setVelocity(monster.getLocation().getDirection().normalize().multiply(5));
 
                     }
                 }
@@ -120,8 +116,7 @@ public class FireStaffWeapon implements Listener {
                         projectile.setShooter(player);
                         projectile.setCustomName("StaffLeft");
                         projectile.setCustomNameVisible(false);
-                        projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(2));
-                        projectile.setGravity(false);
+                        projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(5));
 
                         //TODO remove projectile somehow
 
