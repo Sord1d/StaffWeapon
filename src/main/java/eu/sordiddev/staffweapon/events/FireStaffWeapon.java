@@ -34,6 +34,7 @@ public class FireStaffWeapon implements Listener {
                 assert player != null;
                 ItemStack helditem = player.getInventory().getItemInMainHand();
                 if (helditem.lore() != null) {
+
                     if (helditem.lore().toString().contains("Staff Weapon")) {
                         e.setCancelled(true);
 
@@ -103,6 +104,7 @@ public class FireStaffWeapon implements Listener {
         Player player = e.getPlayer();
         if (e.getAction() == Action.LEFT_CLICK_AIR && player.getInventory().getItemInMainHand().lore() != null) {
 
+
                 if (player.getInventory().getItemInMainHand().lore().toString().contains("Staff Weapon")) {
                     Boolean permission = player.hasPermission("staffweapon.admin") | player.hasPermission("staffweapon.shoot.fast");
 
@@ -118,12 +120,11 @@ public class FireStaffWeapon implements Listener {
                         projectile.setCustomNameVisible(false);
                         projectile.setVelocity(player.getLocation().getDirection().normalize().multiply(5));
 
-                        //TODO remove projectile somehow
 
+                        World world = player.getWorld();
 
                         //play the weapon sound
-                        player.playSound(player.getLocation(), Sound.ENTITY_WITHER_HURT, 1, 1);
-                        player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1, 1);
+                        world.playSound(player.getLocation(), Sound.ENTITY_GHAST_SHOOT, 1, 1);
 
 
                     } else {

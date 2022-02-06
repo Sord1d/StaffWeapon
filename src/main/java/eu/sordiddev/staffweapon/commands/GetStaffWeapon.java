@@ -19,7 +19,7 @@ public class GetStaffWeapon {
 
         Player player = (Player) sender;
 
-        if (player instanceof Player) {
+        if (sender instanceof Player) {
 
 
             boolean permission = player.hasPermission("staffweapon.get") | player.hasPermission("staffweapon.admin");
