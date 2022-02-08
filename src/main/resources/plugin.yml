@@ -1,4 +1,4 @@
-name: StaffWeapon
+name: CNStaffWeapon
 version: '${project.version}'
 main: eu.sordiddev.staffweapon.Staffweapon
 api-version: 1.18

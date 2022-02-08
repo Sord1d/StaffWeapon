@@ -29,9 +29,9 @@ public class SetFast {
 
                     plugin.getConfig().set("fast", fast);
                     plugin.saveConfig();
-                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You've changed the shot damage from " + fastold + " to " + fast);
+                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN +  "You've changed the shot damage from " + fastold + " to " + fast);
                 } catch (Exception e) {
-                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "Usage: /sw setfast <number>");
+                    player.sendMessage((ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN +  "Usage: /sw setfast <number>"));
 
                 }
             }

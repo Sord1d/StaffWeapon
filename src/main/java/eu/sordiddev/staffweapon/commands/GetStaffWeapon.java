@@ -27,17 +27,8 @@ public class GetStaffWeapon {
             if (permission) {
 
 
-                //Defining the weapon object
-                ItemStack staffweapon = new ItemStack(Material.TRIDENT);
-
-                ItemMeta meta = staffweapon.getItemMeta();
-                meta.displayName(Component.text(ChatColor.GOLD + "Staff Weapon"));
-                meta.lore(Collections.singletonList(Component.text(ChatColor.GOLD + "Staff Weapon")));
-                staffweapon.setItemMeta(meta);
-
-
-                player.getInventory().addItem(staffweapon);
-                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "Here's your weapon!");
+                player.getInventory().addItem(ItemStacks.createStaffWeapon());
+                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN + "Here's your weapon!");
 
 
             }else {
@@ -45,7 +36,7 @@ public class GetStaffWeapon {
                         ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.get]");
             }
         }else{
-            player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "ERROR - This command must be executed by a player!"); //TODO Message Design
+            player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "CNStaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "ERROR - This command must be executed by a player!"); //TODO Message Design
         }
 
     }

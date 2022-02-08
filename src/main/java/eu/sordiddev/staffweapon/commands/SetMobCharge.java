@@ -28,9 +28,9 @@ public class SetMobCharge {
 
                     plugin.getConfig().set("mob", charged);
                     plugin.saveConfig();
-                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You've changed the shot damage from " + chargedold + " to " + charged);
+                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN + "You've changed the shot damage from " + chargedold + " to " + charged);
                 } catch (Exception e) {
-                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "Usage: /sw setmob <number>");
+                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN + "Usage: /sw setmob <number>");
 
                 }
 

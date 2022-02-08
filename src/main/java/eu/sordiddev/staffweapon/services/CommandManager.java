@@ -28,29 +28,32 @@ public class CommandManager implements CommandExecutor {
                 new SetCharge(sender, command, label, args);
             } else if (args[0].contains("setmob")) {
                 new SetMobCharge(sender, command, label, args);
+            } else if (args[0].contains("spawnmob")) {
+                    new Spawnmob(sender, command, label, args);
             } else {
                 sender.sendMessage(
-                        ChatColor.RED + "          sord1d/" + ChatColor.GOLD + ChatColor.BOLD + "StaffWeapon",
-                        ChatColor.GOLD + "--------------------------------",
-                        ChatColor.RED + "/sw get  " + ChatColor.GOLD + "get a staff weapon",
-                        ChatColor.RED + "/sw damage  " + ChatColor.GOLD + "lookup damage done by the staff weapon",
-                        ChatColor.RED + "/sw setfast  " + ChatColor.GOLD + "set damage amount of the fast shot",
-                        ChatColor.RED + "/sw setcharged  " + ChatColor.GOLD + "set damage amount of the charged shot",
-                        ChatColor.RED + "/sw setmob  " + ChatColor.GOLD + "set damage amount if a mob uses the staff weapon",
-                        ChatColor.GOLD + "--------------------------------");
+                        ChatColor.DARK_GREEN + "          sord1d/" + ChatColor.GREEN + ChatColor.BOLD + "StaffWeapon",
+                        ChatColor.DARK_GRAY + "--------------------------------",
+                        ChatColor.DARK_GREEN + "/sw get  " + ChatColor.GREEN + "get a staff weapon",
+                        ChatColor.DARK_GREEN + "/sw damage  " + ChatColor.GREEN + "lookup damage done by the staff weapon",
+                        ChatColor.DARK_GREEN + "/sw setfast  " + ChatColor.GREEN + "set damage amount of the fast shot",
+                        ChatColor.DARK_GREEN + "/sw setcharged  " + ChatColor.GREEN + "set damage amount of the charged shot",
+                        ChatColor.DARK_GREEN + "/sw setmob  " + ChatColor.GREEN + "set damage amount if a mob uses the staff weapon",
+                        ChatColor.DARK_GRAY + "--------------------------------");
             }
 
         }catch (Exception e){
 
             sender.sendMessage(
-                    ChatColor.RED + "          sord1d/" + ChatColor.GOLD + ChatColor.BOLD + "StaffWeapon",
-                    ChatColor.GOLD + "--------------------------------",
-                    ChatColor.RED + "/sw get  " + ChatColor.GOLD + "get a staff weapon",
-                    ChatColor.RED + "/sw damage  " + ChatColor.GOLD + "lookup damage done by the staff weapon",
-                    ChatColor.RED + "/sw setfast  " + ChatColor.GOLD + "set damage amount of the fast shot",
-                    ChatColor.RED + "/sw setcharged  " + ChatColor.GOLD + "set damage amount of the charged shot",
-                    ChatColor.RED + "/sw setmob  " + ChatColor.GOLD + "set damage amount if a mob uses the staff weapon",
-                    ChatColor.GOLD + "--------------------------------");
+                    ChatColor.DARK_GREEN + "          sord1d/" + ChatColor.GREEN + ChatColor.BOLD + "StaffWeapon",
+                    ChatColor.DARK_GRAY + "--------------------------------",
+                    ChatColor.DARK_GREEN + "/sw get  " + ChatColor.GREEN + "get a staff weapon",
+                    ChatColor.DARK_GREEN + "/sw damage  " + ChatColor.GREEN + "lookup damage done by the staff weapon",
+                    ChatColor.DARK_GREEN + "/sw setfast  " + ChatColor.GREEN + "set damage amount of the fast shot",
+                    ChatColor.DARK_GREEN + "/sw setcharged  " + ChatColor.GREEN + "set damage amount of the charged shot",
+                    ChatColor.DARK_GREEN + "/sw setmob  " + ChatColor.GREEN + "set damage amount if a mob uses the staff weapon",
+                    ChatColor.DARK_GRAY + "--------------------------------");
+
         }
 
 

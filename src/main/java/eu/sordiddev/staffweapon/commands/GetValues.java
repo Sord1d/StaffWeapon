@@ -25,11 +25,11 @@ public class GetValues {
         if (permission) {
 
             player.sendMessage(
-                    ChatColor.RED + "Staff" + ChatColor.GOLD + "Weapon",
-                    ChatColor.GOLD + "--------------",
-                    ChatColor.RED + "Fast shot: " + ChatColor.GOLD + fast + " damage",
-                    ChatColor.RED + "Charged shot: " + ChatColor.GOLD + charged + " damage",
-                    ChatColor.RED + "Mob shot: " + ChatColor.GOLD + mob + " damage");
+                    ChatColor.DARK_GREEN + "          sord1d/" + ChatColor.GREEN + ChatColor.BOLD + "StaffWeapon",
+                    ChatColor.DARK_GRAY + "--------------------------------",
+                    ChatColor.DARK_GREEN + "Fast shot: " + ChatColor.GREEN + fast + " damage",
+                    ChatColor.DARK_GREEN + "Charged shot: " + ChatColor.GREEN + charged + " damage",
+                    ChatColor.DARK_GREEN + "Mob shot: " + ChatColor.GREEN + mob + " damage");
         } else {
 
             player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
