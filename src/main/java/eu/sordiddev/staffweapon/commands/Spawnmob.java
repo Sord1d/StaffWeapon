@@ -29,7 +29,19 @@ public class Spawnmob {
 
         mob.getEquipment().setItemInMainHand(ItemStacks.createStaffWeapon());
         mob.getEquipment().setItemInMainHandDropChance(0f);
+
+        mob.getEquipment().setHelmet(ItemStacks.createHelmet());
+        mob.getEquipment().setItemInMainHandDropChance(0.1f);
+
+        mob.getEquipment().setChestplate(ItemStacks.createTunic());
+        mob.getEquipment().setItemInMainHandDropChance(0.1f);
+
+        mob.getEquipment().setLeggings(ItemStacks.createPants());
+        mob.getEquipment().setItemInMainHandDropChance(0.1f);
+
         mob.getEquipment().setBoots(ItemStacks.createBoots());
+        mob.getEquipment().setItemInMainHandDropChance(0.1f);
+
 
         mob.setCustomName("Jaffa");
 
