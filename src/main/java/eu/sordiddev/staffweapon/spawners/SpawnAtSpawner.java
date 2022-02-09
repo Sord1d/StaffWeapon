@@ -11,8 +11,11 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Drowned;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Random;
 
 public class SpawnAtSpawner {
     public SpawnAtSpawner(CommandSender sender, Command command, String label, String[] args) {
@@ -28,33 +31,43 @@ public class SpawnAtSpawner {
 
                 for (int i = 1; i <= total; i++) {
 
-                    String world = SpawnConfig.getCustomConfig().getString(String.valueOf(i) + ".world");
-                    World world1 = Bukkit.getWorld(world);
-                    int x = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".x");
-                    int y = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".y");
-                    int z = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".z");
+                    //random number of mobs 1-5
 
-                    Location location = new Location(world1, x, y, z); //TODO LOCATION RADIUS
+                    double random = Math.random() * 5;
 
-                    Drowned mob = world1.spawn(location, Drowned.class);
+                    for (int j = 1; j <= random; j++) {
 
-                    mob.getEquipment().setItemInMainHand(ItemStacks.createStaffWeapon());
-                    mob.getEquipment().setItemInMainHandDropChance(0f);
+                        String world = SpawnConfig.getCustomConfig().getString(String.valueOf(i) + ".world");
+                        World world1 = Bukkit.getWorld(world);
+                        int x = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".x");
+                        int y = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".y") + 1;
+                        int z = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".z");
 
-                    mob.getEquipment().setHelmet(ItemStacks.createHelmet());
-                    mob.getEquipment().setItemInMainHandDropChance(0.01f);
 
-                    mob.getEquipment().setChestplate(ItemStacks.createTunic());
-                    mob.getEquipment().setItemInMainHandDropChance(0.01f);
 
-                    mob.getEquipment().setLeggings(ItemStacks.createPants());
-                    mob.getEquipment().setItemInMainHandDropChance(0.01f);
+                        Location location = new Location(world1, x, y, z);
 
-                    mob.getEquipment().setBoots(ItemStacks.createBoots());
-                    mob.getEquipment().setItemInMainHandDropChance(0.01f);
+                       //TODO check for nearby players
 
-                    mob.setCustomName("Jaffa");
+                            Drowned mob = world1.spawn(location, Drowned.class);
 
+                            mob.getEquipment().setItemInMainHand(ItemStacks.createStaffWeapon());
+                            mob.getEquipment().setItemInMainHandDropChance(0f);
+
+                            mob.getEquipment().setHelmet(ItemStacks.createHelmet());
+                            mob.getEquipment().setItemInMainHandDropChance(0.01f);
+
+                            mob.getEquipment().setChestplate(ItemStacks.createTunic());
+                            mob.getEquipment().setItemInMainHandDropChance(0.01f);
+
+                            mob.getEquipment().setLeggings(ItemStacks.createPants());
+                            mob.getEquipment().setItemInMainHandDropChance(0.01f);
+
+                            mob.getEquipment().setBoots(ItemStacks.createBoots());
+                            mob.getEquipment().setItemInMainHandDropChance(0.01f);
+
+                            mob.setCustomName("Jaffa");
+                        }
 
 
 
