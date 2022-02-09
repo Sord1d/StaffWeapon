@@ -5,6 +5,8 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -20,8 +22,10 @@ public class ItemStacks {
 
      ItemMeta meta = staffweapon.getItemMeta();
 
-     meta.displayName(Component.text(ChatColor.GOLD + "Staff Weapon"));
+     meta.displayName(Component.text(ChatColor.DARK_PURPLE + "Ma'Tok"));
      meta.lore(Collections.singletonList(Component.text(ChatColor.GOLD + "Staff Weapon")));
+     meta.addEnchant(Enchantment.DAMAGE_ALL, 1,false);
+     meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS);
      staffweapon.setItemMeta(meta);
 
      return staffweapon;
@@ -36,6 +40,7 @@ public class ItemStacks {
         meta.displayName(Component.text(ChatColor.AQUA + "Jaffa Helm"));
         meta.lore(Collections.singletonList(Component.text(ChatColor.WHITE + "SG Adventure")));
         meta.setColor(Color.fromRGB(154,154,154));
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS);
 
         helmet.setItemMeta(meta);
 
@@ -50,6 +55,7 @@ public class ItemStacks {
         meta.displayName(Component.text(ChatColor.AQUA + "Jaffa Harnisch"));
         meta.lore(Collections.singletonList(Component.text(ChatColor.WHITE + "SG Adventure")));
         meta.setColor(Color.fromRGB(154,154,154));
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS);
 
         tunic.setItemMeta(meta);
 
@@ -64,6 +70,7 @@ public class ItemStacks {
         meta.displayName(Component.text(ChatColor.AQUA + "Jaffa Hose"));
         meta.lore(Collections.singletonList(Component.text(ChatColor.WHITE + "SG Adventure")));
         meta.setColor(Color.fromRGB(154,154,154));
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS);
 
         pants.setItemMeta(meta);
 
@@ -78,6 +85,7 @@ public class ItemStacks {
         meta.displayName(Component.text(ChatColor.AQUA + "Jaffa Stiefel"));
         meta.lore(Collections.singletonList(Component.text(ChatColor.WHITE + "SG Adventure")));
         meta.setColor(Color.fromRGB(154,154,154));
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS);
 
         boots.setItemMeta(meta);
 

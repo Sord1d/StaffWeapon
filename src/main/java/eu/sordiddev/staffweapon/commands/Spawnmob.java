@@ -8,6 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Drowned;
 import org.bukkit.entity.Player;
+import org.bukkit.loot.LootTable;
 
 
 public class Spawnmob {
@@ -35,7 +36,6 @@ public class Spawnmob {
 
         mob.getEquipment().setBoots(ItemStacks.createBoots());
         mob.getEquipment().setItemInMainHandDropChance(0.01f);
-
 
         mob.setCustomName("Jaffa");
 
