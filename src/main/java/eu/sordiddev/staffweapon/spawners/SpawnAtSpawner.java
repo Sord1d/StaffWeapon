@@ -15,6 +15,7 @@ import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Random;
 
 public class SpawnAtSpawner {
@@ -31,23 +32,33 @@ public class SpawnAtSpawner {
 
                 for (int i = 1; i <= total; i++) {
 
-                    //random number of mobs 1-5
-
-                    double random = Math.random() * 5;
-
-                    for (int j = 1; j <= random; j++) {
-
-                        String world = SpawnConfig.getCustomConfig().getString(String.valueOf(i) + ".world");
-                        World world1 = Bukkit.getWorld(world);
-                        int x = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".x");
-                        int y = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".y") + 1;
-                        int z = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".z");
 
 
+                    String world = SpawnConfig.getCustomConfig().getString(String.valueOf(i) + ".world");
+                    World world1 = Bukkit.getWorld(world);
 
-                        Location location = new Location(world1, x, y, z);
+                    int x = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".x");
+                    int y = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".y") + 1;
+                    int z = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".z");
 
-                       //TODO check for nearby players
+                    Location location = new Location(world1, x, y, z);
+                    int range = plugin.getConfig().getInt("range");
+
+
+                    List<Player> players = (List<Player>) location.getNearbyPlayers(range);
+                    sender.sendMessage("list " + i + players); //TODO REMOVE
+
+
+
+                    if (!players.isEmpty()) {
+
+                        //random number of mobs 1-5
+
+                        double random = Math.random() * 5;
+
+                        for (int j = 1; j <= random; j++) {
+
+                            //TODO check for nearby players
 
                             Drowned mob = world1.spawn(location, Drowned.class);
 
@@ -68,10 +79,7 @@ public class SpawnAtSpawner {
 
                             mob.setCustomName("Jaffa");
                         }
-
-
-
-
+                    }
                 }
             } else {
                 sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN + "There are no spawn points defined");

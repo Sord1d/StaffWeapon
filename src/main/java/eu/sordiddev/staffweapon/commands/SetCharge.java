@@ -33,6 +33,8 @@ public class SetCharge {
 
                 }
 
+            }else {
+                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN +  "Usage: /sw setcharged <number>");
             }
         } else {
 

@@ -7,15 +7,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class SetMobCharge {
+public class SetRange {
 
 
-    public SetMobCharge(CommandSender sender, Command command, String label, String[] args) {
+    public SetRange(CommandSender sender, Command command, String label, String[] args) {
         super();
 
-        Player player = (Player) sender;
-
         @NotNull Staffweapon plugin = Staffweapon.getPlugin(Staffweapon.class);
+        Player player = (Player) sender;
 
         Boolean permission = player.hasPermission("staffweapon.admin");
 
@@ -23,29 +22,34 @@ public class SetMobCharge {
 
             if (args.length > 1) {
                 try {
-                    int charged = Integer.parseInt(args[1]);
-                    int chargedold = plugin.getConfig().getInt("mob");
+                    int range = Integer.parseInt(args[1]);
+                    int rangeold = plugin.getConfig().getInt("range");
 
-                    plugin.getConfig().set("mob", charged);
+                    plugin.getConfig().set("range", range);
                     plugin.saveConfig();
-                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN + "You've changed the shot damage from " + chargedold + " to " + charged);
+                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN + "You've changed the spawner range from " + rangeold + " to " + range);
                 } catch (Exception e) {
-                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN + "Usage: /sw setmob <number>");
+                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN +  "Usage: /sw setrange <number>");
 
                 }
 
             } else {
-                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN + "Usage: /sw setmob <number>");
-
+                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN +  "Usage: /sw setrange <number>");
             }
+
         } else {
 
             player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",
                     ChatColor.DARK_GRAY + "[You are lacking the permission node staffweapon.admin]");
         }
 
-
     }
+
+
+
+
+
+
 
 
 }

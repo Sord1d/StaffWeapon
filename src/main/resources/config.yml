@@ -16,3 +16,5 @@ charged: 15
 #Mob charged shot
 mob: 5
 
+#spawner range
+range: 10

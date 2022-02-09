@@ -21,14 +21,14 @@ public class TabComplete implements TabCompleter {
             if (subcommands.isEmpty()) {
 
                 subcommands.add("get");
-                subcommands.add("damage");
+                subcommands.add("values");
                 subcommands.add("setfast");
                 subcommands.add("setcharged");
                 subcommands.add("setmob");
                 subcommands.add("spawnmob");
                 subcommands.add("addspawner");
                 subcommands.add("listspawners");
-
+                subcommands.add("setrange");
             }
         List<String> arguments = new ArrayList<String>();
 

@@ -19,6 +19,7 @@ public class GetValues {
         int fast = plugin.getConfig().getInt("fast");
         int charged = plugin.getConfig().getInt("charged");
         int mob = plugin.getConfig().getInt("mob");
+        int range = plugin.getConfig().getInt("range");
 
         boolean permission = player.hasPermission("staffweapon.lookup") | player.hasPermission("staffweapon.admin");
 
@@ -29,7 +30,8 @@ public class GetValues {
                     ChatColor.DARK_GRAY + "--------------------------------",
                     ChatColor.DARK_GREEN + "Fast shot: " + ChatColor.GREEN + fast + " damage",
                     ChatColor.DARK_GREEN + "Charged shot: " + ChatColor.GREEN + charged + " damage",
-                    ChatColor.DARK_GREEN + "Mob shot: " + ChatColor.GREEN + mob + " damage");
+                    ChatColor.DARK_GREEN + "Mob shot: " + ChatColor.GREEN + mob + " damage",
+                    ChatColor.DARK_GREEN + "Spawner Range: " + ChatColor.GREEN + range + " blocks");
         } else {
 
             player.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GOLD + "You are not permitted to do this",

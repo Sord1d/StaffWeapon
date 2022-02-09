@@ -34,6 +34,8 @@ public class SetFast {
                     player.sendMessage((ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN +  "Usage: /sw setfast <number>"));
 
                 }
+            }else {
+                player.sendMessage((ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN +  "Usage: /sw setfast <number>"));
             }
         } else {
 
