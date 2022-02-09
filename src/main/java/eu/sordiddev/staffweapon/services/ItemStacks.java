@@ -1,4 +1,4 @@
-package eu.sordiddev.staffweapon.commands;
+package eu.sordiddev.staffweapon.services;
 
 
 import net.kyori.adventure.text.Component;

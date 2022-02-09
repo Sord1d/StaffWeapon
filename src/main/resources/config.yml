@@ -15,3 +15,8 @@ charged: 15
 
 #Mob charged shot
 mob: 5
+
+#Down below are the spawn points. If you delete one manually, be sure to adjust the number of spawn points above.
+#Number of spawn points | DO NOT CHANGE THIS UNLESS YOU DELETE A POINT MANUALLY! Use /sw addspawner to add a spawner.
+total: 0
+

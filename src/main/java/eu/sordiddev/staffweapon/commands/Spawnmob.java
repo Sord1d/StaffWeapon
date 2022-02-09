@@ -1,19 +1,13 @@
 package eu.sordiddev.staffweapon.commands;
 
 
-import net.kyori.adventure.text.Component;
-import org.bukkit.ChatColor;
+import eu.sordiddev.staffweapon.services.ItemStacks;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Drowned;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.Collections;
 
 
 public class Spawnmob {
@@ -31,16 +25,16 @@ public class Spawnmob {
         mob.getEquipment().setItemInMainHandDropChance(0f);
 
         mob.getEquipment().setHelmet(ItemStacks.createHelmet());
-        mob.getEquipment().setItemInMainHandDropChance(0.1f);
+        mob.getEquipment().setItemInMainHandDropChance(0.01f);
 
         mob.getEquipment().setChestplate(ItemStacks.createTunic());
-        mob.getEquipment().setItemInMainHandDropChance(0.1f);
+        mob.getEquipment().setItemInMainHandDropChance(0.01f);
 
         mob.getEquipment().setLeggings(ItemStacks.createPants());
-        mob.getEquipment().setItemInMainHandDropChance(0.1f);
+        mob.getEquipment().setItemInMainHandDropChance(0.01f);
 
         mob.getEquipment().setBoots(ItemStacks.createBoots());
-        mob.getEquipment().setItemInMainHandDropChance(0.1f);
+        mob.getEquipment().setItemInMainHandDropChance(0.01f);
 
 
         mob.setCustomName("Jaffa");

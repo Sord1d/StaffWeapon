@@ -1,6 +1,8 @@
 package eu.sordiddev.staffweapon.services;
 
 import eu.sordiddev.staffweapon.commands.*;
+import eu.sordiddev.staffweapon.spawners.AddSpawner;
+import eu.sordiddev.staffweapon.spawners.SpawnerList;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -30,6 +32,10 @@ public class CommandManager implements CommandExecutor {
                 new SetMobCharge(sender, command, label, args);
             } else if (args[0].contains("spawnmob")) {
                     new Spawnmob(sender, command, label, args);
+            } else if (args[0].contains("addspawner")) {
+                new AddSpawner(sender, command, label, args);
+            } else if (args[0].contains("listspawners")) {
+                new SpawnerList(sender, command, label, args);
             } else {
                 sender.sendMessage(
                         ChatColor.DARK_GREEN + "          sord1d/" + ChatColor.GREEN + ChatColor.BOLD + "StaffWeapon",

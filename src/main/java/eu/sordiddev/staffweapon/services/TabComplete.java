@@ -25,6 +25,9 @@ public class TabComplete implements TabCompleter {
                 subcommands.add("setfast");
                 subcommands.add("setcharged");
                 subcommands.add("setmob");
+                subcommands.add("spawnmob");
+                subcommands.add("addspawner");
+                subcommands.add("listspawners");
 
             }
         List<String> arguments = new ArrayList<String>();
