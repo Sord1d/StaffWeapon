@@ -35,8 +35,6 @@ public class SpawnAtSpawner {
                     int z = SpawnConfig.getCustomConfig().getInt(String.valueOf(i) + ".z");
 
                     Location location = new Location(world1, x, y, z); //TODO LOCATION RADIUS
-                    player.getLocation().setWorld(world1);
-                    player.getLocation().set(x,y,z);
 
                     Drowned mob = world1.spawn(location, Drowned.class);
 
