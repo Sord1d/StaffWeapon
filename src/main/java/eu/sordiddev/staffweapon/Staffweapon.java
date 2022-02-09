@@ -3,6 +3,7 @@ package eu.sordiddev.staffweapon;
 import eu.sordiddev.staffweapon.services.CommandManager;
 import eu.sordiddev.staffweapon.events.ExplodeProjectile;
 import eu.sordiddev.staffweapon.events.FireStaffWeapon;
+import eu.sordiddev.staffweapon.services.SpawnConfig;
 import eu.sordiddev.staffweapon.services.TabComplete;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,7 +26,17 @@ public final class Staffweapon extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
-        //TODO FIX -> PROJECTLES NOT DESPAWNNG
+        SpawnConfig.saveDefaultConfig();
+
+        //This is just here to catch the null pointer exception a user would get when he adds a spawner / requests a list for the first time
+        //I don't know why this happens, but this works. I might look for a better solution later //TODO
+        try {
+            SpawnConfig.reloadCustomConfig();
+        }catch (Exception e){
+
+        }
+
+
 
 
        getCommand("sw").setExecutor(new CommandManager());

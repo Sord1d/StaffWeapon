@@ -59,6 +59,7 @@ public class CommandManager implements CommandExecutor {
                     ChatColor.DARK_GREEN + "/sw setcharged  " + ChatColor.GREEN + "set damage amount of the charged shot",
                     ChatColor.DARK_GREEN + "/sw setmob  " + ChatColor.GREEN + "set damage amount if a mob uses the staff weapon",
                     ChatColor.DARK_GRAY + "--------------------------------");
+                    sender.sendMessage(String.valueOf(e));
 
         }
 

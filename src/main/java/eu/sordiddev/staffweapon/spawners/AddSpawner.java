@@ -1,6 +1,7 @@
 package eu.sordiddev.staffweapon.spawners;
 
 import eu.sordiddev.staffweapon.Staffweapon;
+import eu.sordiddev.staffweapon.services.SpawnConfig;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -8,14 +9,16 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Objects;
 
 public class AddSpawner {
-    public AddSpawner(CommandSender sender, Command command, String label, String[] args) {
+    public AddSpawner(CommandSender sender, Command command, String label, String[] args) throws UnsupportedEncodingException {
 
     @NotNull Staffweapon plugin = Staffweapon.getPlugin(Staffweapon.class);
 
-        int total = plugin.getConfig().getInt("total");
+
+        int total = SpawnConfig.getCustomConfig().getInt("total");
         int current = total + 1;
 
         Player player = (Player) sender;
@@ -26,19 +29,17 @@ public class AddSpawner {
         int z = (int) player.getLocation().getZ();
 
 
-        plugin.getConfig().addDefault(current+".world",world);
-        plugin.getConfig().addDefault(current+".x",x);
-        plugin.getConfig().addDefault(current+".y",y);
-        plugin.getConfig().addDefault(current+".z",z);
-        plugin.getConfig().set("total", current);
-        plugin.getConfig().set(current+".world",world);
-        plugin.getConfig().set(current+".x",x);
-        plugin.getConfig().set(current+".y",y);
-        plugin.getConfig().set(current+".z",z);
+        SpawnConfig.getCustomConfig().addDefault(current+".world",world);
+        SpawnConfig.getCustomConfig().addDefault(current+".x",x);
+        SpawnConfig.getCustomConfig().addDefault(current+".y",y);
+        SpawnConfig.getCustomConfig().addDefault(current+".z",z);
+        SpawnConfig.getCustomConfig().set("total", current);
+        SpawnConfig.getCustomConfig().set(current+".world",world);
+        SpawnConfig.getCustomConfig().set(current+".x",x);
+        SpawnConfig.getCustomConfig().set(current+".y",y);
+        SpawnConfig.getCustomConfig().set(current+".z",z);
+        SpawnConfig.saveCustomConfig();
 
-
-        plugin.saveDefaultConfig();
-        plugin.saveConfig();
 
         player.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_GREEN + "StaffWeapon" + ChatColor.GRAY + "] " + ChatColor.GREEN + "You've added the point" + current + " (World: " + world + " x: " + x + " y: " + y + " z: " + z +")");
 
